@@ -40,7 +40,7 @@ if not hasattr(argparse, 'BooleanOptionalAction'):
 
 def main():
     parser = argparse.ArgumentParser('ebomb',
-                                     description='Email Behavioral Overload & Monitoring Benchmark (E.B.O.M.B)')
+                                     description='Email Behavioral Overload & Monitoring Benchmark (E.B.O.M.B.)')
     parser.add_argument('targets', nargs='+', help='Email addresses separated by spaces.')
     parser.add_argument('--threads-count', '-tc', type=int)
     parser.add_argument('--proxy', action=argparse.BooleanOptionalAction, help='Use proxy.')
