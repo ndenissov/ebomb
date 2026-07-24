@@ -1,6 +1,6 @@
 [project]
 name = "ebomb"
-version = "3.0.1"
+version = "3.0.2"
 description = "Email Behavioral Overload & Monitoring Benchmark"
 authors = [
     { name = "Nikita Denissov", email = "n.denissov@proton.me" }
@@ -29,7 +29,7 @@ classifiers = [
 httpx = { extras = ["socks"], version = "^0.28.1" }
 rich = "^15.0.0"
 fake-useragent = "^2.2.0"
-spys = "^1.1.0"
+spys = "^1.2.1"
 
 [project.urls]
 Homepage = "https://github.com/ndenissov/ebomb"

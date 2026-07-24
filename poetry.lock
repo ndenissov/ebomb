@@ -44,21 +44,6 @@ html5lib = ["html5lib"]
 lxml = ["lxml"]
 
 [[package]]
-name = "bs4"
-version = "0.0.2"
-description = "Dummy package for Beautiful Soup (beautifulsoup4)"
-optional = false
-python-versions = "*"
-groups = ["main"]
-files = [
-    {file = "bs4-0.0.2-py2.py3-none-any.whl", hash = "sha256:abf8742c0805ef7f662dce4b51cca104cffe52b835238afc169142ab9b3fbccc"},
-    {file = "bs4-0.0.2.tar.gz", hash = "sha256:a48685c58f50fe127722417bae83fe6badf500d54b55f7e39ffe43b798653925"},
-]
-
-[package.dependencies]
-beautifulsoup4 = "*"
-
-[[package]]
 name = "certifi"
 version = "2026.7.22"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -210,7 +195,7 @@ description = "Powerful and Pythonic XML processing library combining libxml2/li
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
-markers = "python_version < \"3.11\""
+markers = "python_version < \"3.15\""
 files = [
     {file = "lxml-6.1.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:09dd5b7075dc2f7709654a46543ba1ea3c2e217b2ed8fbd413a8a945a0f40f60"},
     {file = "lxml-6.1.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:f6ac4ef4d82dff54670227a69c67782ae0b811b5cf6b17954f1e8f7502fc0d1d"},
@@ -451,20 +436,20 @@ files = [
 
 [[package]]
 name = "spys"
-version = "1.1.0"
-description = "Python API for spys.one/spys.me proxies"
+version = "1.2.1"
+description = "Python API for fetching, parsing, and filtering free HTTP, HTTPS, and SOCKS5 proxies"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "spys-1.1.0-py3-none-any.whl", hash = "sha256:1ca2af68cd7868909aa90cee8616f7ff587bed7ccd5b29be1afa344a4d680b36"},
-    {file = "spys-1.1.0.tar.gz", hash = "sha256:449da9eecf9fd3342e72cbd42eb7ab90f257a87260232a9043b16443fe797ecd"},
+    {file = "spys-1.2.1-py3-none-any.whl", hash = "sha256:972b29e97f5c670a55ea64390c5092885ab2f045c47a920f7cea87613f6bc6b2"},
+    {file = "spys-1.2.1.tar.gz", hash = "sha256:af88e746862758c63df8792f067900ce8ce20354bcee83842249671bd1c71807"},
 ]
 
 [package.dependencies]
-bs4 = "*"
-httpx = "*"
-lxml = {version = "*", markers = "python_version < \"3.11\""}
+beautifulsoup4 = ">=4.15.0,<5.0.0"
+httpx = ">=0.28.1,<0.29.0"
+lxml = {version = ">=6.1.1,<7.0.0", markers = "python_version < \"3.15\""}
 
 [[package]]
 name = "typing-extensions"
@@ -502,4 +487,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.9"
-content-hash = "2d1e37dd8be3b212d6698c0a30cb8fe053fab41903b048c856b51535e9ac96ec"
+content-hash = "cd3e2e74899aa9e9d2d1f0cbc3e710cfa96a65cae9952b8f94a87629af917a46"
