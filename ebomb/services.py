@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 
 import httpx
 
-from EBomb._ua import random_ua
+from ebomb._ua import random_ua
 
 __all__ = ('Service', 'services', 'UNIQUE_NETLOC', 'SERVICES_DB_FILE_PATH')
 
@@ -38,9 +38,8 @@ class Service:
     def request(self, mail: str, proxies: str = None) -> httpx.Response:
         if proxies is not None:
             proxies = f'socks5://{proxies}'
-            proxies = {'http://': proxies, 'https://': proxies}
 
-        with httpx.Client(proxies=proxies) as client:
+        with httpx.Client(proxy=proxies) as client:
             for ua_n in ('user-agent', 'User-Agent'):
                 resp = client.send(
                     httpx.Request(self.method, self.url.replace('%s', mail),
@@ -51,17 +50,17 @@ class Service:
         return resp
 
 
-def _get_services_from_json() -> tuple[tuple[str, str]]:
+def _get_services() -> tuple[tuple[str, str]]:
     if not (SERVICES_DB_FILE_PATH.is_file() and SERVICES_DB_FILE_PATH.stat().st_size):
         download: HTTPResponse
-        with urllib.request.urlopen('https://github.com/NIKDISSV-Forever/EBomb/blob/main/EBomb/services.txt'
+        with urllib.request.urlopen('https://github.com/ndenissov/EBomb/blob/main/EBomb/services.txt'
                                     '?raw=true') as download:
             SERVICES_DB_FILE_PATH.write_bytes(download.read())
     with open(SERVICES_DB_FILE_PATH) as to_load:
         return *((*serv.splitlines(),) for serv in to_load.read().strip().split('\n\n')),
 
 
-_DB = _get_services_from_json()
+_DB = _get_services()
 services = [Service(*serv) for serv in _DB]
 UNIQUE_NETLOC = len({urllib.parse.urlparse(url).netloc for _, url in _DB})
 del _DB

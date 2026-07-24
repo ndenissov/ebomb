@@ -1,6 +1,6 @@
 import argparse
 
-import EBomb
+import ebomb
 
 if not hasattr(argparse, 'BooleanOptionalAction'):
     class BooleanOptionalAction(argparse.Action):
@@ -8,7 +8,6 @@ if not hasattr(argparse, 'BooleanOptionalAction'):
 
         def __init__(self, option_strings, dest, default=None, type=None,
                      choices=None, required=False, help=None, metavar=None):
-
             _option_strings = []
             for option_string in option_strings:
                 _option_strings.append(option_string)
@@ -40,9 +39,9 @@ if not hasattr(argparse, 'BooleanOptionalAction'):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('targets', type=str, nargs='+',
-                        help='Email addresses separated by spaces.')
+    parser = argparse.ArgumentParser('ebomb',
+                                     description='Email Behavioral Overload & Monitoring Benchmark (E.B.O.M.B)')
+    parser.add_argument('targets', nargs='+', help='Email addresses separated by spaces.')
     parser.add_argument('--threads-count', '-tc', type=int)
     parser.add_argument('--proxy', action=argparse.BooleanOptionalAction, help='Use proxy.')
     parser.add_argument('--forever', action=argparse.BooleanOptionalAction, default=True,
@@ -51,7 +50,7 @@ def main():
                         help='Display something on the screen.')
     args = parser.parse_args().__dict__
     tc = args.pop('threads_count')
-    EBomb.EBomb(**args).start(tc)
+    ebomb.EBomb(**args).start(tc)
 
 
 if __name__ == '__main__':

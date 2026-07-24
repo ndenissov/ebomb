@@ -7,12 +7,11 @@ import shutil
 from multiprocessing.pool import ThreadPool
 from urllib.error import URLError
 
-import EasyProxies
 from httpx import HTTPError
 from rich.console import Console
 from spys.me import Getters
 
-from EBomb.services import *
+from ebomb.services import *
 
 __all__ = ('EBomb', 'Service', 'services')
 
@@ -106,15 +105,10 @@ class EBomb:
     @property
     def _socks5_proxies(self) -> set[str]:
         try:
-            return {'localhost:9050',  # tor socks proxy
-                    *(EasyProxies.Proxies.get(format='txt', type='socks5', uptime=100)
-                      or EasyProxies.Proxies.get(format='txt', type='socks5'))}
-        except (URLError, TimeoutError):
-            try:
-                return {'localhost:9050', *(str(i) for i in Getters.get_socks5_proxies())}
-            except Exception:
-                self.console.log('[red]Error getting proxy.[/]')
-                raise
+            return {'localhost:9050', *(str(i) for i in Getters.get_socks5_proxies())}
+        except Exception:
+            self.console.log('[red]Error getting proxy.[/]')
+            raise
 
     @property
     def working_proxy(self):
@@ -153,7 +147,7 @@ class EBomb:
                 new_loc = resp.headers.get('Location', resp.headers.get('location')) if resp is not None else None
                 if new_loc:
                     _markup.service = 'i green'
-                    services[pos].url = new_loc
+                    services[pos].url = new_loc.replace(email, '%s')
                     services[pos].method = 'GET' if code == 301 else 'POST'
                 else:
                     _markup.service = 'red'
