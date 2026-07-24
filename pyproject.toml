@@ -1,0 +1,47 @@
+[project]
+name = "ebomb"
+version = "3.0.0"
+description = "Email Behavioral Overload & Monitoring Benchmark"
+authors = [
+    { name = "Nikita Denissov", email = "n.denissov@proton.me" }
+]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Security",
+    "Topic :: Internet",
+    "Topic :: Communications :: Email :: Filters",
+    "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+httpx = { extras = ["socks"], version = "^0.28.1" }
+rich = "^15.0.0"
+fake-useragent = "^2.2.0"
+spys = "^1.1.0"
+
+[project.urls]
+Homepage = "https://github.com/ndenissov/ebomb"
+Repository = "https://github.com/ndenissov/ebomb"
+
+[project.scripts]
+ebomb = "ebomb.__main__:main"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+packages = [{ include = "ebomb" }]
+include = ["ebomb/services.txt"]
