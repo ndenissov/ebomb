@@ -1,6 +1,6 @@
 [project]
 name = "ebomb"
-version = "3.0.0"
+version = "3.0.1"
 description = "Email Behavioral Overload & Monitoring Benchmark"
 authors = [
     { name = "Nikita Denissov", email = "n.denissov@proton.me" }
