@@ -1,5 +1,10 @@
 # Email Behavioral Overload & Monitoring Benchmark (E.B.O.M.B.)
 
+[![PyPI version](https://img.shields.io/pypi/v/ebomb.svg)](https://pypi.org/project/ebomb/)
+[![Downloads](https://static.pepy.tech/badge/ebomb)](https://pepy.tech/project/ebomb)
+[![Python versions](https://img.shields.io/pypi/pyversions/ebomb.svg)](https://pypi.org/project/ebomb/)
+[![License](https://img.shields.io/pypi/l/ebomb.svg)](https://github.com/ndenissov/ebomb/blob/main/LICENSE)
+
 **EBOMB** (**e**mail **B**ehavioral **O**verload and **M**onitoring **B**enchmark) is an open-source benchmarking tool
 designed to evaluate email server resilience, inbox rate-limiting, and spam filtering behaviors under synthetic
 high-volume load.
